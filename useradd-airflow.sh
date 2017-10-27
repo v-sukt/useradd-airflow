@@ -9,7 +9,7 @@
 
 useradd() {
 
-python3.4 <<-user_add &>/dev/null
+python3 <<-user_add &>/dev/null
 import airflow
 from airflow import models, settings
 from airflow.contrib.auth.backends.password_auth import PasswordUser
