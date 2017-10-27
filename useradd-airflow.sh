@@ -9,19 +9,21 @@
 
 useradd() {
 
-        python3.4 <<-user_add &>/dev/null
-        import airflow
-        from airflow import models, settings
-        from airflow.contrib.auth.backends.password_auth import PasswordUser
-        user = PasswordUser(models.User())
-        user.username = "$1"
-        user.email = "$2"
-        user.password = "$3"
-        session = settings.Session()
-        session.add(user)
-        session.commit()
+python3.4 <<-user_add &>/dev/null
+import airflow
+from airflow import models, settings
+from airflow.contrib.auth.backends.password_auth import PasswordUser
+user = PasswordUser(models.User())
+user.username = "$1"
+user.email = "$2"
+user.password = "$3"
+session = settings.Session()
+session.add(user)
+session.commit()
 user_add
+
 return $?
+
 }
 
 # Checks if being executed by correct user
